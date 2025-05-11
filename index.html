@@ -1,0 +1,25 @@
+<body>
+    <p>Type in your request</p>
+    <input type="text" id="request">
+    <button onclick="send_request()">Send</button><br>
+    <div id="result"></div>
+
+    <script>
+        async function send_request(){
+            let user_input = document.getElementById("request").value;
+            console.log(user_input);
+            let response = await fetch("http://127.0.0.1:8000/csv_generator", {
+                method: "POST",
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({"user_input": user_input})
+            });
+            let data = await response.text();
+            console.log(data);
+            document.getElementById("result").innerHTML = `<a href="file://${data}" target="_blank">Open File</a>`;
+            let p=new Promise((resolve,reject)=>{setTimeout(()=>{resolve("done"),10000})})
+            p.then(()=>{console.log("done")})
+        }
+    </script>
+</body>
