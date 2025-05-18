@@ -27,6 +27,8 @@ Jane,30,San Francisco
 Bob,35,Chicago
 Alice,20,Houston
 Charlie,40,Dallas
+```
+Please don't always put John Jane Bob Alice Charlie they are only example names.
 ...
 '''
 }]
@@ -44,4 +46,4 @@ def generate_csv(question):
     file = open(f'{datetime.now().strftime("%Y-%m-%d %H:%M:%S")}.csv', 'w')
     file.write(response['message']['content'].split("```")[1])
     print(f"{file.name}")
-    return f"{os.getcwd()}/{file.name}"
+    return f"{file.name}"

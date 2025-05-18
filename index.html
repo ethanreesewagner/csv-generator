@@ -1,10 +1,14 @@
 <body>
     <p>Type in your request</p>
     <input type="text" id="request">
-    <button onclick="send_request()">Send</button><br>
+    <button id="send_request">Send</button><br>
     <div id="result"></div>
 
     <script>
+        document.getElementById("send_request").addEventListener("click", (e) => {
+            event.preventDefault();
+            send_request();
+        });
         async function send_request(){
             let user_input = document.getElementById("request").value;
             console.log(user_input);
